@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Living Hope App</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            text-align: center;
+        }
+
+        .container {
+            padding-top: 50px;
+        }
+
+        .logo {
+            width: 550px;
+            max-width: 95%;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #007BFF;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 14px 30px;
+            margin: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .top-links {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="{% static 'images/logo.png' %}" class="logo">
+        <h1>Welcome to Living Hope</h1>
+
+        <div>
+            <a href="/hct/" class="btn">HCT Program</a>
+            <a href="/lse/" class="btn">LSE Program</a>
+            <a href="/admin/" class="btn">Admin Panel</a>
+        </div>
+
+        <div class="top-links">
+            {% if user.is_authenticated %}
+                <p>Logged in as <strong>{{ user.username }}</strong></p>
+                <a href="/logout/" class="btn">Logout</a>
+            {% else %}
+                <a href="/login/" class="btn">Login</a>
+                <a href="/register/" class="btn">Register</a>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
